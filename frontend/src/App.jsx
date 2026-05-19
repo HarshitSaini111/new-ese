@@ -36,7 +36,10 @@ function ProtectedRoute({
   if (!token) {
 
     return (
-      <Navigate to="/login" />
+      <Navigate
+        to="/login"
+        replace
+      />
     );
 
   }
@@ -88,7 +91,10 @@ export default function App() {
         <Route
           path="/"
           element={
-            <Navigate to="/login" />
+            <Navigate
+              to="/login"
+              replace
+            />
           }
         />
 
@@ -187,7 +193,10 @@ export default function App() {
         <Route
           path="*"
           element={
-            <Navigate to="/login" />
+            <Navigate
+              to="/login"
+              replace
+            />
           }
         />
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const API_URL =
-  "http://localhost:8000";
+  "https://new-ese.onrender.com/api/ai/analyze";
 
 export default function AIAnalysis() {
 
@@ -42,11 +42,13 @@ export default function AIAnalysis() {
     try {
 
       const token =
-        localStorage.getItem("token");
+        localStorage.getItem(
+          "token"
+        );
 
       const res = await fetch(
 
-        `${API_URL}/api/ai/analyze`,
+        API_URL,
 
         {
 
@@ -63,10 +65,13 @@ export default function AIAnalysis() {
           },
 
           body: JSON.stringify({
+
             complaint,
+
           }),
 
         }
+
       );
 
       const data =
@@ -111,7 +116,9 @@ export default function AIAnalysis() {
           AI{" "}
 
           <span className="accent-cyan">
+
             Complaint Analysis
+
           </span>
 
         </h1>
@@ -182,8 +189,6 @@ export default function AIAnalysis() {
               className="btn btn-ai"
               disabled
             >
-
-              <span className="spinner" />
 
               Analysing...
 
@@ -257,28 +262,28 @@ export default function AIAnalysis() {
               <div
                 className="ai-loading-bar"
                 style={{
-                  width: "90%"
+                  width: "90%",
                 }}
               />
 
               <div
                 className="ai-loading-bar"
                 style={{
-                  width: "75%"
+                  width: "75%",
                 }}
               />
 
               <div
                 className="ai-loading-bar"
                 style={{
-                  width: "85%"
+                  width: "85%",
                 }}
               />
 
               <div
                 className="ai-loading-bar"
                 style={{
-                  width: "60%"
+                  width: "60%",
                 }}
               />
 

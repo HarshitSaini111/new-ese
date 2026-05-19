@@ -1,21 +1,29 @@
 import { useState } from "react";
 
+const API =
+  "https://new-ese.onrender.com/api/complaints";
+
 const INIT = {
+
   name: "",
   email: "",
   title: "",
   description: "",
   category: "",
   location: "",
+
 };
 
 export default function ComplaintForm() {
 
-  const [form, setForm] = useState(INIT);
+  const [form, setForm] =
+    useState(INIT);
 
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] =
+    useState(null);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] =
+    useState(false);
 
   const set = (k, v) =>
 
@@ -34,8 +42,12 @@ export default function ComplaintForm() {
     ) {
 
       setStatus({
+
         type: "error",
-        msg: "Please fill all required fields.",
+
+        msg:
+          "Please fill all required fields.",
+
       });
 
       return;
@@ -49,11 +61,13 @@ export default function ComplaintForm() {
     try {
 
       const token =
-        localStorage.getItem("token");
+        localStorage.getItem(
+          "token"
+        );
 
       const res = await fetch(
 
-        "http://localhost:8000/api/complaints",
+        API,
 
         {
 
@@ -72,9 +86,11 @@ export default function ComplaintForm() {
           body: JSON.stringify(form),
 
         }
+
       );
 
-      const data = await res.json();
+      const data =
+        await res.json();
 
       if (res.ok) {
 
@@ -107,7 +123,8 @@ export default function ComplaintForm() {
 
         type: "error",
 
-        msg: "Cannot connect to backend.",
+        msg:
+          "Cannot connect to backend.",
 
       });
 
@@ -121,8 +138,6 @@ export default function ComplaintForm() {
 
     <div>
 
-      {/* Header */}
-
       <div className="page-header">
 
         <h1 className="page-title">
@@ -130,7 +145,9 @@ export default function ComplaintForm() {
           Register{" "}
 
           <span className="accent">
+
             Complaint
+
           </span>
 
         </h1>
@@ -145,22 +162,24 @@ export default function ComplaintForm() {
 
       </div>
 
-      {/* Form Card */}
-
       <div className="card">
 
         <div className="card-title">
+
           Complaint Details
+
         </div>
 
         <div className="form-grid">
 
-          {/* Name */}
+          {/* NAME */}
 
           <div className="form-group">
 
             <label className="form-label">
+
               Full Name
+
             </label>
 
             <input
@@ -168,18 +187,23 @@ export default function ComplaintForm() {
               placeholder="Rahul Kumar"
               value={form.name}
               onChange={(e) =>
-                set("name", e.target.value)
+                set(
+                  "name",
+                  e.target.value
+                )
               }
             />
 
           </div>
 
-          {/* Email */}
+          {/* EMAIL */}
 
           <div className="form-group">
 
             <label className="form-label">
+
               Email Address
+
             </label>
 
             <input
@@ -188,18 +212,23 @@ export default function ComplaintForm() {
               placeholder="rahul@gmail.com"
               value={form.email}
               onChange={(e) =>
-                set("email", e.target.value)
+                set(
+                  "email",
+                  e.target.value
+                )
               }
             />
 
           </div>
 
-          {/* Title */}
+          {/* TITLE */}
 
           <div className="form-group">
 
             <label className="form-label">
+
               Complaint Title
+
             </label>
 
             <input
@@ -207,25 +236,33 @@ export default function ComplaintForm() {
               placeholder="Water Leakage Issue"
               value={form.title}
               onChange={(e) =>
-                set("title", e.target.value)
+                set(
+                  "title",
+                  e.target.value
+                )
               }
             />
 
           </div>
 
-          {/* Category */}
+          {/* CATEGORY */}
 
           <div className="form-group">
 
             <label className="form-label">
+
               Complaint Category
+
             </label>
 
             <select
               className="form-input"
               value={form.category}
               onChange={(e) =>
-                set("category", e.target.value)
+                set(
+                  "category",
+                  e.target.value
+                )
               }
             >
 
@@ -257,12 +294,14 @@ export default function ComplaintForm() {
 
           </div>
 
-          {/* Location */}
+          {/* LOCATION */}
 
           <div className="form-group span-2">
 
             <label className="form-label">
+
               Location
+
             </label>
 
             <input
@@ -270,18 +309,23 @@ export default function ComplaintForm() {
               placeholder="Ghaziabad"
               value={form.location}
               onChange={(e) =>
-                set("location", e.target.value)
+                set(
+                  "location",
+                  e.target.value
+                )
               }
             />
 
           </div>
 
-          {/* Description */}
+          {/* DESCRIPTION */}
 
           <div className="form-group span-2">
 
             <label className="form-label">
+
               Complaint Description
+
             </label>
 
             <textarea
@@ -300,8 +344,6 @@ export default function ComplaintForm() {
 
         </div>
 
-        {/* Status */}
-
         {status && (
 
           <div
@@ -314,8 +356,6 @@ export default function ComplaintForm() {
 
         )}
 
-        {/* Buttons */}
-
         <div className="btn-row">
 
           <button
@@ -323,15 +363,6 @@ export default function ComplaintForm() {
             onClick={handleSubmit}
             disabled={loading}
           >
-
-            {loading ? (
-
-              <span className="spinner" />
-
-            ) : (
-
-              "📢"
-            )}
 
             {loading
               ? "Submitting..."
@@ -341,7 +372,9 @@ export default function ComplaintForm() {
 
           <button
             className="btn btn-ghost"
-            onClick={() => setForm(INIT)}
+            onClick={() =>
+              setForm(INIT)
+            }
             disabled={loading}
           >
 

@@ -33,7 +33,7 @@ export default function Dashboard() {
           const res =
             await fetch(
 
-              "http://localhost:8000/api/complaints",
+              "https://new-ese.onrender.com/api/complaints",
 
               {
 
@@ -63,7 +63,7 @@ export default function Dashboard() {
 
           }
 
-        } catch (err) {
+        } catch {
 
           setError(
             "Cannot connect to backend."

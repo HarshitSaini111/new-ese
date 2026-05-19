@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
-const API = "http://localhost:8000/api";
+const API = "https://new-ese.onrender.com/api";
 
 export default function Login() {
 
@@ -45,19 +45,24 @@ export default function Login() {
     try {
 
       const res = await fetch(
+
         `${API}/login`,
+
         {
 
           method: "POST",
 
           headers: {
+
             "Content-Type":
               "application/json",
+
           },
 
           body: JSON.stringify(form),
 
         }
+
       );
 
       const data = await res.json();
@@ -65,15 +70,22 @@ export default function Login() {
       if (!res.ok) {
 
         throw new Error(
-          data.message || "Login failed"
+
+          data.message ||
+          "Login failed"
+
         );
 
       }
+
+      // Save Token
 
       localStorage.setItem(
         "token",
         data.token
       );
+
+      // Redirect
 
       navigate("/dashboard");
 
@@ -93,16 +105,22 @@ export default function Login() {
 
     <div className="auth-page">
 
+      {/* LEFT */}
+
       <div className="auth-left">
 
         <div className="auth-brand">
 
           <div className="auth-brand-icon">
+
             📢
+
           </div>
 
           <div className="auth-brand-name">
+
             Smart<span>ComplaintAI</span>
+
           </div>
 
         </div>
@@ -115,14 +133,33 @@ export default function Login() {
 
         </h1>
 
+        <p className="auth-sub">
+
+          Login to access the
+          AI-powered Complaint
+          Management System.
+
+        </p>
+
       </div>
+
+      {/* RIGHT */}
 
       <div className="auth-right">
 
         <div className="auth-card">
 
           <p className="auth-card-title">
+
             Login
+
+          </p>
+
+          <p className="auth-card-subtitle">
+
+            Enter your credentials
+            to continue.
+
           </p>
 
           {error && (
@@ -137,10 +174,14 @@ export default function Login() {
 
           <form onSubmit={handleSubmit}>
 
+            {/* EMAIL */}
+
             <div className="form-group">
 
               <label className="form-label">
+
                 Email Address
+
               </label>
 
               <input
@@ -154,10 +195,14 @@ export default function Login() {
 
             </div>
 
+            {/* PASSWORD */}
+
             <div className="form-group">
 
               <label className="form-label">
+
                 Password
+
               </label>
 
               <input
@@ -190,7 +235,9 @@ export default function Login() {
             Don&apos;t have an account?{" "}
 
             <Link to="/signup">
+
               Register here
+
             </Link>
 
           </p>

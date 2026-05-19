@@ -37,11 +37,13 @@ export default function ComplaintList() {
       try {
 
         const token =
-          localStorage.getItem("token");
+          localStorage.getItem(
+            "token"
+          );
 
         const res = await fetch(
 
-          "http://localhost:8000/api/complaints",
+          "https://new-ese.onrender.com/api/complaints",
 
           {
 
@@ -156,7 +158,9 @@ export default function ComplaintList() {
           All{" "}
 
           <span className="accent">
+
             Complaints
+
           </span>
 
         </h1>
@@ -178,15 +182,21 @@ export default function ComplaintList() {
         <div className="stat-box">
 
           <div className="stat-box-label">
+
             Total Complaints
+
           </div>
 
           <div className="stat-box-val">
+
             {complaints.length}
+
           </div>
 
           <div className="stat-box-sub">
+
             registered complaints
+
           </div>
 
         </div>
@@ -194,15 +204,21 @@ export default function ComplaintList() {
         <div className="stat-box">
 
           <div className="stat-box-label">
+
             Pending
+
           </div>
 
           <div className="stat-box-val">
+
             {pendingCount}
+
           </div>
 
           <div className="stat-box-sub">
+
             unresolved complaints
+
           </div>
 
         </div>
@@ -210,15 +226,21 @@ export default function ComplaintList() {
         <div className="stat-box">
 
           <div className="stat-box-label">
+
             High Priority
+
           </div>
 
           <div className="stat-box-val">
+
             {highPriorityCount}
+
           </div>
 
           <div className="stat-box-sub">
+
             urgent issues
+
           </div>
 
         </div>
@@ -226,15 +248,21 @@ export default function ComplaintList() {
         <div className="stat-box">
 
           <div className="stat-box-label">
+
             Resolved
+
           </div>
 
           <div className="stat-box-val">
+
             {resolvedCount}
+
           </div>
 
           <div className="stat-box-sub">
+
             completed complaints
+
           </div>
 
         </div>
@@ -248,7 +276,9 @@ export default function ComplaintList() {
         <div className="search-wrap">
 
           <span className="search-icon">
+
             ⌕
+
           </span>
 
           <input
@@ -283,13 +313,13 @@ export default function ComplaintList() {
           <span
             className="spinner"
             style={{
-              margin: "0 auto"
+              margin: "0 auto",
             }}
           />
 
           <p
             style={{
-              marginTop: 16
+              marginTop: 16,
             }}
           >
 
@@ -322,7 +352,9 @@ export default function ComplaintList() {
           <div className="empty-state">
 
             <div className="empty-icon">
+
               ◈
+
             </div>
 
             <p>
@@ -388,7 +420,7 @@ export default function ComplaintList() {
 
             </div>
 
-            {/* Complaint Title */}
+            {/* Title */}
 
             <h3
               style={{
@@ -420,19 +452,27 @@ export default function ComplaintList() {
             <div className="skill-chips">
 
               <span className="chip">
+
                 {c.category}
+
               </span>
 
               <span className="chip">
+
                 {c.priority}
+
               </span>
 
               <span className="chip">
+
                 {c.department}
+
               </span>
 
               <span className="chip">
+
                 {c.status}
+
               </span>
 
             </div>

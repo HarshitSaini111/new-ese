@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
-const API = "http://localhost:8000/api";
+const API = "https://new-ese.onrender.com/api";
 
 export default function Signup() {
 
@@ -61,19 +61,24 @@ export default function Signup() {
     try {
 
       const res = await fetch(
+
         `${API}/signup`,
+
         {
 
           method: "POST",
 
           headers: {
+
             "Content-Type":
               "application/json",
+
           },
 
           body: JSON.stringify(form),
 
         }
+
       );
 
       const data = await res.json();
@@ -81,8 +86,10 @@ export default function Signup() {
       if (!res.ok) {
 
         throw new Error(
+
           data.message ||
           "Registration failed"
+
         );
 
       }
@@ -120,11 +127,15 @@ export default function Signup() {
         <div className="auth-brand">
 
           <div className="auth-brand-icon">
+
             📢
+
           </div>
 
           <div className="auth-brand-name">
+
             Smart<span>ComplaintAI</span>
+
           </div>
 
         </div>
@@ -150,10 +161,15 @@ export default function Signup() {
         <div className="auth-features">
 
           {[
+
             "AI-powered complaint analysis",
+
             "Complaint tracking system",
+
             "Department recommendation",
+
             "Secure JWT authentication",
+
           ].map((f) => (
 
             <div
@@ -180,7 +196,9 @@ export default function Signup() {
         <div className="auth-card">
 
           <p className="auth-card-title">
+
             Create Account
+
           </p>
 
           <p className="auth-card-subtitle">
@@ -220,7 +238,9 @@ export default function Signup() {
             <div className="form-group">
 
               <label className="form-label">
+
                 Full Name
+
               </label>
 
               <input
@@ -238,7 +258,9 @@ export default function Signup() {
             <div className="form-group">
 
               <label className="form-label">
+
                 Email Address
+
               </label>
 
               <input
@@ -257,7 +279,9 @@ export default function Signup() {
             <div className="form-group">
 
               <label className="form-label">
+
                 Password
+
               </label>
 
               <input
@@ -277,15 +301,9 @@ export default function Signup() {
               disabled={loading}
             >
 
-              {loading ? (
-
-                <span className="spinner" />
-
-              ) : (
-
-                "Create Account →"
-
-              )}
+              {loading
+                ? "Loading..."
+                : "Create Account →"}
 
             </button>
 
@@ -296,7 +314,9 @@ export default function Signup() {
             Already have an account?{" "}
 
             <Link to="/login">
+
               Login here
+
             </Link>
 
           </p>

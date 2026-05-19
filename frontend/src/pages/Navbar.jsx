@@ -1,12 +1,23 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import {
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 export default function Navbar() {
 
-  const navigate = useNavigate();
+  const navigate =
+    useNavigate();
 
-  const location = useLocation();
+  const location =
+    useLocation();
 
   const links = [
+
+    {
+      path: "/dashboard",
+      icon: "📊",
+      label: "Dashboard",
+    },
 
     {
       path: "/add",
@@ -26,13 +37,21 @@ export default function Navbar() {
       label: "AI Analysis",
     },
 
-    {
-      path: "/dashboard",
-      icon: "📊",
-      label: "Dashboard",
-    },
-
   ];
+
+  // ======================
+  // Logout
+  // ======================
+
+  const handleLogout = () => {
+
+    localStorage.removeItem(
+      "token"
+    );
+
+    navigate("/login");
+
+  };
 
   return (
 
@@ -51,12 +70,17 @@ export default function Navbar() {
       >
 
         <div className="navbar-logo-mark">
+
           S
+
         </div>
 
         <span className="navbar-name">
 
-          Smart<span>ComplaintAI</span>
+          Smart
+          <span>
+            ComplaintAI
+          </span>
 
         </span>
 
@@ -107,15 +131,7 @@ export default function Navbar() {
 
       <button
         className="nav-btn"
-        onClick={() => {
-
-          localStorage.removeItem(
-            "token"
-          );
-
-          navigate("/login");
-
-        }}
+        onClick={handleLogout}
       >
 
         Logout
